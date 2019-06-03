@@ -28,6 +28,8 @@ public class MainWindow extends Application {
         TextJudgmentRequested textJudgmentRequestedController = fxmlLoader.getController();
         textJudgmentRequestedController.init(path);
         Scene scene = new Scene(textJudgmentRequestedFXML, 1000, 700);
+        stage.setMinHeight(400);
+        stage.setMinWidth(700);
         stage.setScene(scene);
         stage.show();
     }
