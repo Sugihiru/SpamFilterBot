@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="DataProgram.TextJudgmentRequested">
+   <children>
+      <VBox prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <children>
+           <Label text="Judge the messages below : Yes if it's a good message, No if it's a bad message." />
+            <ScrollPane prefHeight="413.0" prefWidth="604.0">
+              <content>
+                 <HBox prefHeight="380.0" prefWidth="589.0">
+                    <children>
+                        <Region prefHeight="380.0" prefWidth="16.0" />
+                       <ListView fx:id="list" prefHeight="380.0" prefWidth="567.0" />
+                    </children>
+                 </HBox>
+              </content>
+            </ScrollPane>
+         </children></VBox>
+   </children>
+</AnchorPane>
