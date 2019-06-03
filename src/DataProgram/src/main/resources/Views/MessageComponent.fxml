@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="57.0" prefWidth="498.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="DataProgram.MessageDisplay">
+<AnchorPane prefHeight="57.0" prefWidth="498.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="DataProgram.MessageComponentController">
     <fx:define>
         <ToggleGroup fx:id="YesNo" />
     </fx:define>
@@ -20,10 +20,7 @@
             <VBox prefHeight="100.0" prefWidth="79.0">
                <children>
                   <Region layoutX="10.0" layoutY="27.0" prefHeight="9.0" prefWidth="79.0" />
-                  <RadioButton fx:id="yes" mnemonicParsing="false" text="Yes">
-                     <toggleGroup>
-                        <ToggleGroup fx:id="YesNo" />
-                     </toggleGroup></RadioButton>
+                  <RadioButton fx:id="yes" mnemonicParsing="false" text="Yes" toggleGroup="$YesNo" />
                   <Region prefHeight="7.0" prefWidth="79.0" />
                   <RadioButton fx:id="no" mnemonicParsing="false" text="No" toggleGroup="$YesNo" />
                </children>

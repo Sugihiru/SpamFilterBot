@@ -1,6 +1,7 @@
 package DataProgram;
 
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
@@ -23,14 +24,18 @@ public class MainWindow extends Application {
     public void start(Stage stage) throws IOException {
 
         String path = openExplorer();
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Views/TextJudgmentRequested.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Views/JudgmentRequestedWindow.fxml"));
         AnchorPane textJudgmentRequestedFXML = fxmlLoader.load();
-        TextJudgmentRequested textJudgmentRequestedController = fxmlLoader.getController();
+        JudgmentRequestedWindowController textJudgmentRequestedController = fxmlLoader.getController();
         textJudgmentRequestedController.init(path);
         Scene scene = new Scene(textJudgmentRequestedFXML, 1000, 700);
         stage.setMinHeight(400);
         stage.setMinWidth(700);
         stage.setScene(scene);
+        stage.setOnCloseRequest(e -> {
+            textJudgmentRequestedController.close();
+            Platform.exit();
+        });
         stage.show();
     }
 
