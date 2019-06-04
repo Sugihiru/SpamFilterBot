@@ -39,7 +39,7 @@ public class MainWindow extends Application {
 
         initJudgmentRequested();
         initLoadFile();
-        Scene scene = new Scene(this.loadFileFXML, 1000, 700);
+        Scene scene = new Scene(this.loadFileFXML, 700, 400);
         this.sceneController = new SceneController(scene);
         sceneController.add(LoadFileController.class.getSimpleName(), this.loadFileFXML);
         sceneController.add(JudgmentRequestedController.class.getSimpleName(), this.textJudgmentRequestedFXML);
@@ -51,8 +51,8 @@ public class MainWindow extends Application {
             this.textJudgmentRequestedController.close();
             Platform.exit();
         });
-        stage.setMinHeight(400);
         stage.setMinWidth(700);
+        stage.setMinHeight(400);
         stage.show();
     }
 

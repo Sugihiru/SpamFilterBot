@@ -8,20 +8,18 @@
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox alignment="center" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="206.0" prefWidth="496.0" spacing="8.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="DataProgram.LoadFileController">
-    <children>
-        <Region prefHeight="33.0" prefWidth="600.0" />
-        <HBox prefHeight="73.0" prefWidth="464.0">
-            <children>
-                <Label text="Name of the generated file :" />
-                <Region prefHeight="73.0" prefWidth="23.0" />
-                <TextField fx:id="nameGeneratedFile" prefHeight="25.0" prefWidth="210.0" />
-                <Label text=" .txt" />
-            </children>
-        </HBox>
-        <Button onAction="#chooseFile" mnemonicParsing="false" text="Choose a file" />
-    </children>
+<VBox alignment="center" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+      prefHeight="206.0" prefWidth="496.0" spacing="8.0" xmlns="http://javafx.com/javafx/8.0.172-ea"
+      xmlns:fx="http://javafx.com/fxml/1" fx:controller="DataProgram.LoadFileController">
     <padding>
-        <Insets bottom="16.0" left="16.0" right="16.0" top="16.0" />
+        <Insets bottom="16.0" left="16.0" right="16.0" top="16.0"/>
     </padding>
+    <Region prefHeight="33.0" prefWidth="600.0"/>
+    <HBox prefHeight="73.0" prefWidth="464.0">
+        <Label text="Name of the generated file :"/>
+        <Region prefHeight="73.0" prefWidth="23.0"/>
+        <TextField fx:id="nameGeneratedFile" HBox.hgrow="ALWAYS" prefHeight="25.0" prefWidth="210.0"/>
+        <Label text=" .txt"/>
+    </HBox>
+    <Button onAction="#chooseFile" mnemonicParsing="false" text="Choose a file"/>
 </VBox>
