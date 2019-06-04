@@ -5,11 +5,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Pagination;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
-import javafx.util.Callback;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,12 +35,14 @@ public class JudgmentRequestedWindowController
 
     }
 
-    public int itemsPerPage() {
+    private int itemsPerPage() {
         return 20;
     }
 
-    public void initMessagePage(int page, VBox vBox) {
+    private void initMessagesPage(int page, VBox vBox) {
         for (int i = page; i < page + itemsPerPage(); i++) {
+            if (!(i < messages.size()))
+                break;
             try {
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Views/MessageComponent.fxml"));
                 AnchorPane messageDisplayFXML = fxmlLoader.load();
@@ -55,7 +56,7 @@ public class JudgmentRequestedWindowController
         }
     }
 
-    public javafx.scene.control.ScrollPane createPage(int pageIndex) {
+    private javafx.scene.control.ScrollPane createPage(int pageIndex) {
         javafx.scene.control.ScrollPane scrollPane = new javafx.scene.control.ScrollPane();
         VBox vbox = new VBox();
         vbox.prefWidthProperty().bind(scrollPane.widthProperty());
@@ -64,28 +65,20 @@ public class JudgmentRequestedWindowController
         scrollPane.setFitToHeight(true);
 
         int page = pageIndex * itemsPerPage();
-        initMessagePage(page, vbox);
+        initMessagesPage(page, vbox);
         return scrollPane;
     }
 
     private void initPagination()
     {
         int nbPage = (int)Math.ceil(this.messages.size() / (double)itemsPerPage());
-        System.out.println(this.messages.size());
-        System.out.println(itemsPerPage());
-        System.out.println(nbPage);
         pagination.setPageCount(nbPage);
-        pagination.setPageFactory(new Callback<Integer, javafx.scene.Node>() {
-            @Override
-            public javafx.scene.Node call(Integer pageIndex)  {
-                return createPage(pageIndex);
-            }
-        });
+        pagination.setPageFactory(this::createPage);
     }
 
     void init(String path) throws IOException
     {
-        this.writer = new PrintWriter("Data.txt", Charset.forName("ISO-8859-1"));
+        this.writer = new PrintWriter("Data.txt", StandardCharsets.UTF_8);
         this.components = new ArrayList<>();
         this.path = path;
         parsing = new ParsingMessagesFromFile(this.path);

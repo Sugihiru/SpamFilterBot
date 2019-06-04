@@ -1,7 +1,5 @@
 package DataProgram;
 
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextArea;
@@ -22,30 +20,25 @@ public class MessageComponentController {
     @FXML
     public RadioButton no;
 
-    void initEventRadioButton(RadioButton radioButton, boolean valueRadioButton)
+    private void initEventRadioButton(RadioButton radioButton, boolean valueRadioButton)
     {
-        radioButton.selectedProperty().addListener(new ChangeListener<Boolean>() {
-            @Override
-            public void changed(ObservableValue<? extends Boolean> obs, Boolean wasPreviouslySelected, Boolean isNowSelected) {
-                value = ((isNowSelected) == valueRadioButton);
-            }
-        });
+        radioButton.selectedProperty().addListener((obs, wasPreviouslySelected, isNowSelected) ->
+                value = ((isNowSelected) == valueRadioButton));
     }
 
     @FXML
     public void initialize() {
     }
 
-    public void init(String message, PrintWriter writer)
-    {
+    void init(String message, PrintWriter writer) {
         this.writer = writer;
-        this.givenText = message;
-        this.message.setText(givenText);
+        this.givenText = message;//new String(message.getBytes(StandardCharsets.ISO_8859_1), StandardCharsets.ISO_8859_1);
+        this.message.setText(message);
         initEventRadioButton(yes, true);
         initEventRadioButton(no, false);
     }
 
-    public void close()
+    void close()
     {
         if (yes.isSelected() || no.isSelected())
         writer.println(givenText + "::" + value);
