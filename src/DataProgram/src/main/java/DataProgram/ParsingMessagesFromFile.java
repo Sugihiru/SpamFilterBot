@@ -14,8 +14,7 @@ import java.util.regex.Pattern;
 
 class ParsingMessagesFromFile {
     private List<String> messages;
-    private long nb = 0;
-    private Pattern hourFound;
+    private long countLineFile = 0;
     private List<String> banList;
 
     private boolean checkBanList(String line)
@@ -28,37 +27,40 @@ class ParsingMessagesFromFile {
         return true;
     }
 
-    private void parser(Path path)
+    private void parser(String[] container)
     {
-        hourFound = Pattern.compile("\\d+ \\w+ \\d{4}, \\d{1,2}:\\d{2} [AP]M");
+        Pattern dateFound = Pattern.compile("\\d+ \\w+ \\d{4}, \\d{1,2}:\\d{2} [AP]M");
+        this.countLineFile += 1;
+        String message;
+        // by splitting and keeping only container[1], we remove header of each message,
+        // like, "15 October 2018, 10:43 AM, Thomas : "
+        if (container.length > 1) {
+            message = container[1];
+            // skip 3 first lines and banned message
+            if (!(countLineFile < 3) && checkBanList(message)) {
+                messages.add(message);
+            }
+        }
+        else
+        {
+            //if line don't contain header, it means either it's a sequence of the precedent message or it's a date
+            if (container.length > 0) {
+                Matcher date = dateFound.matcher(container[0]);
+                // check if message is not empty and is not a date and is not a banned message,
+                // then added to precedent message
+                if (messages.size() > 0 && !date.matches() && checkBanList(container[0]))
+                    messages.set(messages.size() - 1, messages.get(messages.size() - 1) + "\n" + container[0]);
+            }
+        }
+    }
 
+    private void lexer(Path path)
+    {
         try {
+            // read line by line the file, split by ": ", then give it to parser
             Files.lines(path, StandardCharsets.UTF_8)
                     .map(line -> line.split(": ", 2))
-                    .forEach(container ->
-                    {
-                        this.nb += 1;
-                        String message;
-                        if (container.length > 1) {
-                            message = container[1];
-                            if (!(nb < 3) && checkBanList(message)) {
-                                messages.add(message);
-                            }
-                        }
-                        else
-                        {
-                            System.out.println("enter");
-                            if (container.length > 0) {
-                                System.out.println(container[0]);
-                                Matcher hour = hourFound.matcher(container[0]);
-                                if (messages.size() > 0 && !hour.matches() && checkBanList(container[0])) {
-                                    System.out.println("done");
-                                    messages.set(messages.size() - 1, messages.get(messages.size() - 1) + "\n" + container[0]);
-                                }
-                            }
-                        }
-                    });
-
+                    .forEach(this::parser);
         }
         catch (Exception ex)
         {
@@ -82,6 +84,6 @@ class ParsingMessagesFromFile {
     {
         this.messages = new ArrayList<>();
         initBanList();
-        parser(Paths.get(path));
+        lexer(Paths.get(path));
     }
 }

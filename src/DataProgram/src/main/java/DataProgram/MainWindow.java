@@ -3,47 +3,54 @@ package DataProgram;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.layout.AnchorPane;
-import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
-import java.io.File;
 import java.io.IOException;
 
 public class MainWindow extends Application {
 
-    private String openExplorer()
-    {
-        FileChooser fileChooser = new FileChooser();
-        File selectedFile = fileChooser.showOpenDialog(null);
-        if (selectedFile == null)
-            return null;
-        return selectedFile.getAbsolutePath();
+    private SceneController sceneController;
+
+    private Parent textJudgmentRequestedFXML;
+    private JudgmentRequestedController textJudgmentRequestedController;
+
+    private Parent loadFileFXML;
+    private LoadFileController loadFileController;
+
+    private void initJudgmentRequested() throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Views/JudgmentRequested.fxml"));
+        this.textJudgmentRequestedFXML = fxmlLoader.load();
+        this.textJudgmentRequestedController = fxmlLoader.getController();
+        this.textJudgmentRequestedController.init();
     }
 
-    private void initWindow(Stage stage, String path) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Views/JudgmentRequestedWindow.fxml"));
-        AnchorPane textJudgmentRequestedFXML = fxmlLoader.load();
-        JudgmentRequestedWindowController textJudgmentRequestedController = fxmlLoader.getController();
-        textJudgmentRequestedController.init(path);
-        Scene scene = new Scene(textJudgmentRequestedFXML, 1000, 700);
-        stage.setScene(scene);
-        stage.setOnCloseRequest(e -> {
-            textJudgmentRequestedController.close();
-            Platform.exit();
-        });
+    private void initLoadFile() throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Views/LoadFile.fxml"));
+        this.loadFileFXML  = fxmlLoader.load();
+        this.loadFileController = fxmlLoader.getController();
+        this.loadFileController.giveJudgmentRequestedController(this.textJudgmentRequestedController);
+        this.loadFileController.init();
     }
 
     @Override
     public void start(Stage stage) throws IOException {
 
-        String path = openExplorer();
-        if (path == null) {
+        initJudgmentRequested();
+        initLoadFile();
+        Scene scene = new Scene(this.loadFileFXML, 1000, 700);
+        this.sceneController = new SceneController(scene);
+        sceneController.add(LoadFileController.class.getSimpleName(), this.loadFileFXML);
+        sceneController.add(JudgmentRequestedController.class.getSimpleName(), this.textJudgmentRequestedFXML);
+        this.loadFileController.initSceneController(sceneController);
+        this.textJudgmentRequestedController.initSceneController(sceneController);
+        stage.setScene(scene);
+
+        stage.setOnCloseRequest(e -> {
+            this.textJudgmentRequestedController.close();
             Platform.exit();
-            System.exit(0);
-        }
-        initWindow(stage, path);
+        });
         stage.setMinHeight(400);
         stage.setMinWidth(700);
         stage.show();

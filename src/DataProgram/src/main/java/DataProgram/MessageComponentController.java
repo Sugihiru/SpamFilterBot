@@ -32,7 +32,7 @@ public class MessageComponentController {
 
     void init(String message, PrintWriter writer) {
         this.writer = writer;
-        this.givenText = message;//new String(message.getBytes(StandardCharsets.ISO_8859_1), StandardCharsets.ISO_8859_1);
+        this.givenText = message;
         this.message.setText(message);
         initEventRadioButton(yes, true);
         initEventRadioButton(no, false);
@@ -40,8 +40,10 @@ public class MessageComponentController {
 
     void close()
     {
-        if (yes.isSelected() || no.isSelected())
-        writer.println(givenText + "::" + value);
+        if (writer != null) {
+            if (yes.isSelected() || no.isSelected())
+                writer.println(givenText + "::" + value);
+        }
     }
 
 }

@@ -12,27 +12,28 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
-public class JudgmentRequestedWindowController
+public class JudgmentRequestedController
 {
     @FXML
     public Pagination pagination;
 
     @FXML
-    private
-    String path;
-
-    @FXML
-    private
-    ParsingMessagesFromFile parsing;
+    private ParsingMessagesFromFile parsing;
 
     private List<MessageComponentController> components;
     private PrintWriter writer;
-
     private List<String> messages;
+    private SceneController sceneController;
+    private String nameGeneratedFile = "Data";
 
     @FXML
     public void initialize(){
 
+    }
+
+    void initSceneController(SceneController sceneController)
+    {
+        this.sceneController = sceneController;
     }
 
     private int itemsPerPage() {
@@ -51,6 +52,7 @@ public class JudgmentRequestedWindowController
                 messageDisplayController.init(messages.get(i), writer);
                 vBox.getChildren().add(messageDisplayFXML);
             } catch (Exception e) {
+                System.out.println("Error in loading items of the page");
                 System.out.println(e.getMessage());
             }
         }
@@ -76,22 +78,28 @@ public class JudgmentRequestedWindowController
         pagination.setPageFactory(this::createPage);
     }
 
-    void init(String path) throws IOException
-    {
-        this.writer = new PrintWriter("Data.txt", StandardCharsets.UTF_8);
-        this.components = new ArrayList<>();
-        this.path = path;
-        parsing = new ParsingMessagesFromFile(this.path);
+    void setValue(String path, String name) throws IOException {
+        setNameGeneratedFile(name);
+        this.writer = new PrintWriter(this.nameGeneratedFile + ".txt", StandardCharsets.UTF_8);
+        this.parsing = new ParsingMessagesFromFile(path);
         this.messages = parsing.getMessages();
         initPagination();
     }
 
-    void close()
+    private void setNameGeneratedFile(String name)
     {
-        for (MessageComponentController component : components)
-        {
+        if (!name.isEmpty())
+            this.nameGeneratedFile = name;
+    }
+    void init() {
+        this.components = new ArrayList<>();
+    }
+
+    void close() {
+        for (MessageComponentController component : components) {
             component.close();
         }
-        this.writer.close();
+        if (writer != null)
+            this.writer.close();
     }
 }
