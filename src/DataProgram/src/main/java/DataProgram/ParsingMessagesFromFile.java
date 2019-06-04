@@ -1,5 +1,7 @@
 package DataProgram;
 
+import javafx.application.Platform;
+
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -42,6 +44,7 @@ public class ParsingMessagesFromFile {
         catch (Exception ex)
         {
             System.out.println("Error with the file. Try again with a valid file");
+            Platform.exit();
             System.exit(-1);
         }
     }
