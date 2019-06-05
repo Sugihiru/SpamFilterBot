@@ -6,9 +6,6 @@ import javafx.scene.control.Pagination;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,11 +18,10 @@ public class JudgmentRequestedController
     private ParsingMessagesFromFile parsing;
 
     private List<MessageComponentController> components;
-    //private PrintWriter writer;
     private List<String> messages;
     private SceneController sceneController;
     private String nameGeneratedFile = "Data";
-    private Connection connection;
+    private DataBase dataBase;
 
     @FXML
     public void initialize(){
@@ -50,7 +46,7 @@ public class JudgmentRequestedController
                 AnchorPane messageDisplayFXML = fxmlLoader.load();
                 MessageComponentController messageDisplayController = fxmlLoader.getController();
                 components.add(messageDisplayController);
-                messageDisplayController.init(messages.get(i), connection);
+                messageDisplayController.init(messages.get(i), this.dataBase);
                 vBox.getChildren().add(messageDisplayFXML);
             } catch (Exception e) {
                 System.out.println("Error in loading items of the page");
@@ -79,13 +75,9 @@ public class JudgmentRequestedController
         pagination.setPageFactory(this::createPage);
     }
 
-    void setValue(String path, String name) throws IOException {
+    void setValue(String path, String name) {
         setNameGeneratedFile(name);
-        connection = SaveDataDB.createDB(name);
-        if (connection == null)
-            connection = SaveDataDB.connectionDB(name);
-
-//        this.writer = new PrintWriter(this.nameGeneratedFile + ".txt", StandardCharsets.UTF_8);
+        this.dataBase.createDB(this.nameGeneratedFile);
         this.parsing = new ParsingMessagesFromFile(path);
         this.messages = parsing.getMessages();
         initPagination();
@@ -97,16 +89,11 @@ public class JudgmentRequestedController
             this.nameGeneratedFile = name;
     }
     void init() {
+        this.dataBase = new DataBase();
         this.components = new ArrayList<>();
     }
 
     void close() {
-//        for (MessageComponentController component : components) {
-//            component.close();
-//        }
-        if (connection != null)
-            SaveDataDB.disconnect(connection);
-//        if (writer != null)
-//            this.writer.close();
+        this.dataBase.disconnect();
     }
 }

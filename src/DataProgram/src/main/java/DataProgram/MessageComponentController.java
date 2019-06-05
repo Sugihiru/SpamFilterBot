@@ -3,11 +3,10 @@ package DataProgram;
 import javafx.fxml.FXML;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextArea;
-import java.sql.Connection;
+import javafx.scene.control.ToggleGroup;
 
 public class MessageComponentController {
-    private boolean value = true;
-    private Connection connection;
+    private DataBase dataBase;
     private String givenText;
 
     @FXML
@@ -19,33 +18,29 @@ public class MessageComponentController {
     @FXML
     public RadioButton no;
 
-    private void initEventRadioButton(RadioButton radioButton, boolean valueRadioButton)
+    @FXML
+    public ToggleGroup YesNo;
+
+    private void initToggleGroup()
     {
-        radioButton.selectedProperty().addListener((obs, wasPreviouslySelected, isNowSelected) ->
-                {
-                    value = ((isNowSelected) == valueRadioButton);
-                    SaveDataDB.write(connection, givenText, value);
-                });
+        YesNo.selectedToggleProperty().addListener((obs, wasPreviouslySelected, isNowSelected) ->
+        {
+            if (YesNo.getSelectedToggle() != null) {
+                dataBase.write(givenText, (boolean)YesNo.getSelectedToggle().getUserData());
+            }
+        });
     }
 
     @FXML
     public void initialize() {
     }
 
-    void init(String message, Connection connection) {
-        this.connection = connection;
+    void init(String message, DataBase dataBase) {
+        this.dataBase = dataBase;
         this.givenText = message;
         this.message.setText(message);
-        initEventRadioButton(yes, true);
-        initEventRadioButton(no, false);
+        yes.setUserData(true);
+        no.setUserData(false);
+        initToggleGroup();
     }
-
-    void close()
-    {
-        /*if (writer != null) {
-            if (yes.isSelected() || no.isSelected())
-                writer.println(givenText + "::" + value);
-        }*/
-    }
-
 }

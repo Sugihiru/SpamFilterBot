@@ -7,19 +7,21 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<VBox alignment="center" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-      prefHeight="206.0" prefWidth="496.0" spacing="8.0" xmlns="http://javafx.com/javafx/8.0.172-ea"
-      xmlns:fx="http://javafx.com/fxml/1" fx:controller="DataProgram.LoadFileController">
+<VBox alignment="center" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="206.0" prefWidth="496.0" spacing="8.0" style="-fx-background-color: #636e72;" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="DataProgram.LoadFileController">
     <padding>
-        <Insets bottom="16.0" left="16.0" right="16.0" top="16.0"/>
+        <Insets bottom="16.0" left="16.0" right="16.0" top="16.0" />
     </padding>
-    <Region prefHeight="33.0" prefWidth="600.0"/>
+   <Label text="Generator of data from KakaoTalk file" textFill="WHITE">
+      <font>
+         <Font name="Candara Bold" size="24.0" />
+      </font></Label>
+    <Region prefHeight="33.0" prefWidth="600.0" />
     <HBox prefHeight="73.0" prefWidth="464.0">
-        <Label text="Name of the generated file :"/>
-        <Region prefHeight="73.0" prefWidth="23.0"/>
-        <TextField fx:id="nameGeneratedFile" HBox.hgrow="ALWAYS" prefHeight="25.0" prefWidth="210.0"/>
-        <Label text=" .txt"/>
+        <Label text="Name of the database MySQL :" textFill="WHITE" />
+        <Region prefHeight="73.0" prefWidth="23.0" />
+        <TextField fx:id="nameGeneratedFile" prefHeight="25.0" prefWidth="210.0" HBox.hgrow="ALWAYS" />
     </HBox>
-    <Button onAction="#chooseFile" mnemonicParsing="false" text="Choose a file"/>
+    <Button mnemonicParsing="false" onAction="#chooseFile" text="Choose a file" />
 </VBox>

@@ -35,7 +35,7 @@ public class LoadFileController {
 
     private void initTextField()
     {
-        Pattern pattern = Pattern.compile("[a-zA-Z]*");
+        Pattern pattern = Pattern.compile("[a-z]*");
         UnaryOperator<TextFormatter.Change> filter = c -> {
             if (pattern.matcher(c.getControlNewText()).matches()) {
                 return c ;
