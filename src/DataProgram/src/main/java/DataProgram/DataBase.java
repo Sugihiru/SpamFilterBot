@@ -70,6 +70,18 @@ public class DataBase
         }
     }
 
+    public Boolean getValue(String message) throws SQLException {
+        String query = "SELECT * from message WHERE message = ?";
+        final PreparedStatement ps = connection.prepareStatement(query);
+        ps.setString(1, message);
+        final ResultSet resultSet = ps.executeQuery();
+        if (resultSet.isBeforeFirst()) {
+            resultSet.next();
+            return resultSet.getBoolean("value");
+        }
+        return null;
+    }
+
     private void update(String message, boolean yesNo) throws SQLException {
         String query = "UPDATE message t1 SET t1.value = ? WHERE t1.message = ?";
         final PreparedStatement ps = connection.prepareStatement(query);

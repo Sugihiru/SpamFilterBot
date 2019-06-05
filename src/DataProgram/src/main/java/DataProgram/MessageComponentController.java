@@ -5,6 +5,8 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.ToggleGroup;
 
+import java.sql.SQLException;
+
 public class MessageComponentController {
     private DataBase dataBase;
     private String givenText;
@@ -35,10 +37,30 @@ public class MessageComponentController {
     public void initialize() {
     }
 
+    private void checkYesNoDB()
+    {
+        try {
+            if (this.dataBase.messageAlreadyExists(this.givenText))
+            {
+                Boolean value = this.dataBase.getValue(this.givenText);
+
+                if (value == null) {
+                }
+                else if (value)
+                    yes.setSelected(true);
+                else
+                    no.setSelected(true);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
     void init(String message, DataBase dataBase) {
         this.dataBase = dataBase;
         this.givenText = message;
         this.message.setText(message);
+        checkYesNoDB();
         yes.setUserData(true);
         no.setUserData(false);
         initToggleGroup();
