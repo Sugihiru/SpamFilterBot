@@ -7,11 +7,6 @@ This project was created following the observation that it is difficult to follo
 We decided to do something about it.  
 The Discord bot, based on maching learning, will tread data that we give it, and learn.
 
-## Screenshots
-
-![Screenshot](./Screenshots/FirstScreenDataGenerator.PNG)  
-![Screenshot](./Screenshots/SecondScreenDataGenerator.PNG)  
-
 ## Platform
 - [x] Windows
 - [x] Linux
@@ -30,6 +25,11 @@ The Discord bot, based on maching learning, will tread data that we give it, and
 ## Features
 - Discord Bot.
 - Data Generation software for generating data, used for trainning Discord Bot from KakaoTalk file.
+
+## Screenshots
+
+![Screenshot](./Screenshots/FirstScreenDataGenerator.PNG)  
+![Screenshot](./Screenshots/SecondScreenDataGenerator.PNG)  
 
 ## Installation
 **Data Generator**
@@ -61,6 +61,7 @@ The Discord bot, based on maching learning, will tread data that we give it, and
           ```
         - Jar will be generated in "[YourLocalPath]/SpamFilterBot/DataGenerator/build/libs/" with name dataGenerator-[current version].jar.
     4. You can run it, **enjoy** !    
+
 **Discord bot**
 
 
@@ -77,6 +78,7 @@ The Discord bot, based on maching learning, will tread data that we give it, and
   6. The interface will change, now you can judge the interesting message by selecting yes or no for each message.
   7. You can change of page at the end of the interface by clicking on number page, or 	directional arrows.
   8. You can close the software, and run it later, all modifications will be save on database in live.    
+
 **Discord bot**
 
 ## Why KakaoTalk file ?
