@@ -9,15 +9,15 @@ The Discord bot, based on maching learning, will tread data that we give it, and
 
 ## Screenshots
 
-./Screenshots/FirstScreenDataGenerator.PNG  
-./Screenshots/SecondScreenDataGenerator.PNG  
+![Screenshot](./Screenshots/FirstScreenDataGenerator.PNG)  
+![Screenshot](./Screenshots/SecondScreenDataGenerator.PNG)  
 
 ## Platform
 - [x] Windows
 - [x] Linux
 - [x] Mac
 
-## Tech used
+## Technology used
 - Bot discord
   - [Discord](https://discordapp.com/)
   - Language : [Python](https://www.python.org/)
@@ -60,7 +60,7 @@ The Discord bot, based on maching learning, will tread data that we give it, and
           ./gradlew jar
           ```
         - Jar will be generated in "[YourLocalPath]/SpamFilterBot/DataGenerator/build/libs/" with name dataGenerator-[current version].jar.
-    4. You can run it, **enjoy** !
+    4. You can run it, **enjoy** !    
 **Discord bot**
 
 
@@ -76,7 +76,7 @@ The Discord bot, based on maching learning, will tread data that we give it, and
   5. Wait processing of parsing file, and generation/connection on MySQL database.
   6. The interface will change, now you can judge the interesting message by selecting yes or no for each message.
   7. You can change of page at the end of the interface by clicking on number page, or 	directional arrows.
-  8. You can close the software, and run it later, all modifications will be save on database in live.
+  8. You can close the software, and run it later, all modifications will be save on database in live.    
 **Discord bot**
 
 ## Why KakaoTalk file ?
