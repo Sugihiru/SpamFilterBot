@@ -7,6 +7,9 @@ This project was created following the observation that it is difficult to follo
 We decided to do something about it.  
 The Discord bot, based on maching learning, will tread data that we give it, and learn.
 
+## Screenshots
+
+
 ## Platform
 - [x] Windows
 - [x] Linux
