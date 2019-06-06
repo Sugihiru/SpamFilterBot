@@ -33,9 +33,9 @@ The Discord bot, based on maching learning, will treat data that we give it, and
 
 ## Installation
 **Data Generator**
-    1. Install MySQL
+  1. Install MySQL
       - Download [MySQL](https://www.mysql.com/downloads/) and install/configurate it.
-      - Create a user root with password root, or change it in /SpamFilterBot/DataGenerator/src/main/java/dataGenerator/dataStorage.java, line 26 (createDB method) and 46 (connectionDB method).
+      - Create a user root with password root, or change it in /SpamFilterBot/DataGenerator/src/main/java/dataGenerator/dataStorage.java, (createDB method and connectionDB method).
   2. Install [Java 11 or +](https://www.oracle.com/technetwork/java/javase/downloads/jdk11-downloads-5066655.html)
   3. Create Jar
       - **Windows**
