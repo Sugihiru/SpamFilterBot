@@ -6,7 +6,6 @@ import javafx.scene.control.TextFormatter;
 import javafx.stage.FileChooser;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.function.UnaryOperator;
 import java.util.regex.Pattern;
 
@@ -48,7 +47,7 @@ public class LoadFileController {
     }
 
     @FXML
-    void chooseFile() throws IOException {
+    void chooseFile() {
         FileChooser fileChooser = new FileChooser();
         File selectedFile = fileChooser.showOpenDialog(null);
         if (selectedFile != null) {

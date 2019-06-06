@@ -1,5 +1,6 @@
 package DataProgram;
 
+import DataProgram.DataStorage.DataBase;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Pagination;
@@ -20,7 +21,7 @@ public class JudgmentRequestedController
     private List<MessageComponentController> components;
     private List<String> messages;
     private SceneController sceneController;
-    private String nameGeneratedFile = "Data";
+    private String nameGeneratedFile = "DataStorage";
     private DataBase dataBase;
 
     @FXML

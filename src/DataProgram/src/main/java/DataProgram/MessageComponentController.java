@@ -1,5 +1,6 @@
 package DataProgram;
 
+import DataProgram.DataStorage.DataBase;
 import javafx.fxml.FXML;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextArea;
@@ -45,6 +46,7 @@ public class MessageComponentController {
                 Boolean value = this.dataBase.getValue(this.givenText);
 
                 if (value == null) {
+                    return;
                 }
                 else if (value)
                     yes.setSelected(true);
