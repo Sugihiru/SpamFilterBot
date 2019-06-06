@@ -10,7 +10,7 @@
     <VBox prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
           AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <Label text="Judge the messages below : Yes if it's a good message, No if it's a bad message."/>
-        <Pagination fx:id="pagination" pageCount="0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+        <Pagination style="-fx-background-color: #dfe6e9" fx:id="pagination" pageCount="0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
                     AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" VBox.vgrow="ALWAYS"/>
     </VBox>
 </AnchorPane>

@@ -13,15 +13,24 @@
     <padding>
         <Insets bottom="16.0" left="16.0" right="16.0" top="16.0" />
     </padding>
-   <Label text="Generator of data from KakaoTalk file" textFill="WHITE">
+   <Label text="Data Generator from KakaoTalk file" textFill="#b2bec3">
       <font>
-         <Font name="Candara Bold" size="24.0" />
+         <Font name="Candara Bold" size="28.0" />
       </font></Label>
     <Region prefHeight="33.0" prefWidth="600.0" />
     <HBox prefHeight="73.0" prefWidth="464.0">
-        <Label text="Name of the database MySQL :" textFill="WHITE" />
+        <Label text="Name of the database MySQL :" textFill="#b2bec3">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font></Label>
         <Region prefHeight="73.0" prefWidth="23.0" />
-        <TextField fx:id="nameGeneratedFile" prefHeight="25.0" prefWidth="210.0" HBox.hgrow="ALWAYS" />
+        <TextField fx:id="nameGeneratedFile" prefHeight="25.0" prefWidth="210.0" style="-fx-background-color: #b2bec3" HBox.hgrow="ALWAYS">
+         <font>
+            <Font size="14.0" />
+         </font></TextField>
     </HBox>
-    <Button mnemonicParsing="false" onAction="#chooseFile" text="Choose a file" />
+    <Button mnemonicParsing="false" onAction="#chooseFile" style="-fx-background-color: #b2bec3" text="Choose a file">
+      <font>
+         <Font size="14.0" />
+      </font></Button>
 </VBox>

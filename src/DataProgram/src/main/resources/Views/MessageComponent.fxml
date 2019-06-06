@@ -7,21 +7,26 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="57.0" prefWidth="498.0" xmlns="http://javafx.com/javafx/8.0.172-ea"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="DataProgram.MessageComponentController">
+<AnchorPane prefHeight="57.0" prefWidth="498.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="DataProgram.MessageComponentController">
     <fx:define>
-        <ToggleGroup fx:id="YesNo"/>
+        <ToggleGroup fx:id="YesNo" />
     </fx:define>
     <HBox prefHeight="62.0" prefWidth="498.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
-        <TextArea fx:id="message" editable="false" prefHeight="57.0" prefWidth="419.0" text="Message"
-                  HBox.hgrow="ALWAYS"/>
-        <Region prefHeight="100.0" prefWidth="20.0"/>
-        <VBox prefHeight="100.0" prefWidth="79.0">
-            <Region layoutX="10.0" layoutY="27.0" prefHeight="9.0" prefWidth="79.0"/>
-            <RadioButton fx:id="yes" mnemonicParsing="false" text="Yes" toggleGroup="$YesNo"/>
-            <Region prefHeight="7.0" prefWidth="79.0"/>
-            <RadioButton fx:id="no" mnemonicParsing="false" text="No" toggleGroup="$YesNo"/>
+        <TextArea fx:id="message" editable="false" prefHeight="57.0" prefWidth="419.0" style="-fx-control-inner-background: #b2bec3; -fx-background-color: #b2bec3; -fx-text-fill: black; -fx-" text="Message" HBox.hgrow="ALWAYS">
+         <font>
+            <Font size="13.0" />
+         </font></TextArea>
+        <Region prefHeight="100.0" prefWidth="20.0" style="-fx-background-color: #2d3436;" />
+        <VBox prefHeight="100.0" prefWidth="79.0" style="-fx-background-color: #2d3436;">
+            <Region layoutX="10.0" layoutY="27.0" prefHeight="9.0" prefWidth="79.0" />
+            <RadioButton fx:id="yes" mnemonicParsing="false" text="Yes" textFill="#b2bec3">
+            <toggleGroup>
+               <ToggleGroup fx:id="YesNo" />
+            </toggleGroup></RadioButton>
+            <Region prefHeight="7.0" prefWidth="79.0" />
+            <RadioButton fx:id="no" mnemonicParsing="false" text="No" textFill="#b2bec3" toggleGroup="$YesNo" />
         </VBox>
     </HBox>
 </AnchorPane>
