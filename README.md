@@ -1,9 +1,9 @@
 # SpamFilterBot
-Discord bot to filter messages and display only relevant messages.  
-The bot will read the Discord conversation, and according to its criterias, choose interesting messages to display in a special channel.
+Discord bot for filtering messages and display only relevant messages.  
+The bot will read the Discord conversation, and according to its criterias (machine learning), choose interesting messages to display in a special channel.
 
 ## Motivation
-This project was created following the observation that it is difficult to follow a Discord conversation with many members without spending hours there.  
+This project was created following the observation that it's difficult to follow a Discord conversation with many members without spending hours there.  
 We decided to do something about it.  
 The Discord bot, based on maching learning, will treat data that we give it, and learn.
 
@@ -12,7 +12,7 @@ The Discord bot, based on maching learning, will treat data that we give it, and
 - [x] Linux
 - [x] Mac
 
-## Technology used
+## Technologies used
 - Bot discord
   - [Discord](https://discordapp.com/)
   - Language : [Python](https://www.python.org/)
@@ -27,6 +27,9 @@ The Discord bot, based on maching learning, will treat data that we give it, and
 - Data Generation, used for trainning Discord Bot.
 
 ## Screenshots
+
+**Data Generator**  
+
 
 ![Screenshot](./Screenshots/FirstScreenDataGenerator.PNG)  
 ![Screenshot](./Screenshots/SecondScreenDataGenerator.PNG)  
