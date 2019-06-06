@@ -1,10 +1,10 @@
 # SpamFilterBot
-Discord bot to filter messages and display only relevant messages.\n
+Discord bot to filter messages and display only relevant messages.  
 The bot will read the Discord conversation, and according to its criterias, choose the interesting messages to display in a special channel.
 
 ## Motivation
-This project was created following the observation that it is difficult to follow a Discord conversation with many members without spending hours there.\n
-We decided to do something about it.\n
+This project was created following the observation that it is difficult to follow a Discord conversation with many members without spending hours there.  
+We decided to do something about it.  
 The Discord bot, based on maching learning, will tread data that we give it, and learn.
 
 ## Platform
@@ -24,16 +24,16 @@ The Discord bot, based on maching learning, will tread data that we give it, and
 
 ## Features
 - Discord Bot.
-- Data Generation software for trainning Discord Bot from KakaoTalk file.
+- Data Generation software for generating data, used for trainning Discord Bot from KakaoTalk file.
 
 ## Installation
-*Data Generator*
+**Data Generator**
   1. Install MySQL
       - Download [MySQL](https://www.mysql.com/downloads/) and install/configurate it.
       - Create a user root with password root, or change it in /SpamFilterBot/DataGenerator/src/main/java/dataGenerator/dataStorage.java, line 26 (createDB method) and 46 (connectionDB method).
   2. Install [Java 11 or +](https://www.oracle.com/technetwork/java/javase/downloads/jdk11-downloads-5066655.html)
   3. Create Jar
-      - *Windows*
+      - **Windows**
         - Open search bar and search for Command Prompt.
         - Write and execute :
           ```
@@ -44,7 +44,7 @@ The Discord bot, based on maching learning, will tread data that we give it, and
           gradlew jar
           ```
         - Jar will be generated in "[YourLocalPath]/SpamFilterBot/DataGenerator/build/libs/" with name dataGenerator-[current version].jar.
-      - *Mac / Linux*
+      - **Mac / Linux**
         - Open a terminal.
         - Write and execute :
           ```
@@ -56,11 +56,11 @@ The Discord bot, based on maching learning, will tread data that we give it, and
           ```
         - Jar will be generated in "[YourLocalPath]/SpamFilterBot/DataGenerator/build/libs/" with name dataGenerator-[current version].jar.
     4. You can run it, **enjoy** !
-*Discord bot*
+**Discord bot**
 
 
 ## How to use?
-*Data Generator*
+**Data Generator**
   1. Launch the Jar.
   2. Enter the name of MySQL database you want to use.
       - If database doesn't exist, software will create it later.
@@ -72,19 +72,19 @@ The Discord bot, based on maching learning, will tread data that we give it, and
   6. The interface will change, now you can judge the interesting message by selecting yes or no for each message.
   7. You can change of page at the end of the interface by clicking on number page, or 	directional arrows.
   8. You can close the software, and run it later, all modifications will be save on database in live.
-*Discord bot*
+**Discord bot**
 
 ## Why KakaoTalk file ?
-We decided to use KakaoTalk file for generating data because it's the current platform we use for communication (so bigger data).\n
-SpamFilterBot/DataGenerator/src/main/java/dataGenerator/ParsingMessagesFromFile.java can be re-implemented with another support platform.
+We decided to use KakaoTalk file for generating data because it's the current platform we use for communication (so bigger data).  
+Parsing class can be re-implemented with another support platform.
 
 ## Why Discord Bot ?
 We decided to do a discord bot because Discord is popular, have a great documentation, in English (KakaoTalk documentation is in Korean for major parts).
 
 ## Contributors
-[@Sugihiru](https://github.com/Sugihiru)\n
-[@VianneyDoleans](https://github.com/VianneyDoleans)\n
-[@Hardkaise](https://github.com/Hardkaise)\n
-Philippe\n
-Walter\n
-Alexis\n
+[@Sugihiru](https://github.com/Sugihiru)  
+[@VianneyDoleans](https://github.com/VianneyDoleans)  
+[@Hardkaise](https://github.com/Hardkaise)  
+Philippe  
+Walter  
+Alexis  
