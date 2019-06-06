@@ -9,6 +9,8 @@ The Discord bot, based on maching learning, will tread data that we give it, and
 
 ## Screenshots
 
+./Screenshots/FirstScreenDataGenerator.PNG  
+./Screenshots/SecondScreenDataGenerator.PNG  
 
 ## Platform
 - [x] Windows
