@@ -25,7 +25,9 @@ public class WorkerRunnable implements Runnable
     void stop()
     {
         run = false;
-
+        synchronized (this) {
+            notify();
+        }
     }
 
     @Override
