@@ -1,11 +1,11 @@
 # SpamFilterBot
 Discord bot to filter messages and display only relevant messages.  
-The bot will read the Discord conversation, and according to its criterias, choose the interesting messages to display in a special channel.
+The bot will read the Discord conversation, and according to its criterias, choose interesting messages to display in a special channel.
 
 ## Motivation
 This project was created following the observation that it is difficult to follow a Discord conversation with many members without spending hours there.  
 We decided to do something about it.  
-The Discord bot, based on maching learning, will tread data that we give it, and learn.
+The Discord bot, based on maching learning, will treat data that we give it, and learn.
 
 ## Platform
 - [x] Windows
@@ -24,7 +24,7 @@ The Discord bot, based on maching learning, will tread data that we give it, and
 
 ## Features
 - Discord Bot.
-- Data Generation software for generating data, used for trainning Discord Bot from KakaoTalk file.
+- Data Generation, used for trainning Discord Bot.
 
 ## Screenshots
 
@@ -33,7 +33,7 @@ The Discord bot, based on maching learning, will tread data that we give it, and
 
 ## Installation
 **Data Generator**
-  1. Install MySQL
+    1. Install MySQL
       - Download [MySQL](https://www.mysql.com/downloads/) and install/configurate it.
       - Create a user root with password root, or change it in /SpamFilterBot/DataGenerator/src/main/java/dataGenerator/dataStorage.java, line 26 (createDB method) and 46 (connectionDB method).
   2. Install [Java 11 or +](https://www.oracle.com/technetwork/java/javase/downloads/jdk11-downloads-5066655.html)
@@ -60,7 +60,7 @@ The Discord bot, based on maching learning, will tread data that we give it, and
           ./gradlew jar
           ```
         - Jar will be generated in "[YourLocalPath]/SpamFilterBot/DataGenerator/build/libs/" with name dataGenerator-[current version].jar.
-    4. You can run it, **enjoy** !    
+  4. You can run it, **enjoy** !    
 
 **Discord bot**
 
