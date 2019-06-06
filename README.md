@@ -35,14 +35,14 @@ The Discord bot, based on maching learning, will treat data that we give it, and
 **Data Generator**
   1. Install MySQL
       - Download [MySQL](https://www.mysql.com/downloads/) and install/configurate it.
-      - Create a user root with password root, or change it in [a relative link](./DataGenerator/src/main/java/dataGenerator/dataStorage.java) (createDB method and connectionDB method).
+      - Create a user root with password root, or change it [here](./DataGenerator/src/main/java/dataGenerator/dataStorage/DataBase.java) (createDB method and connectionDB method).
   2. Install [Java 11 or +](https://www.oracle.com/technetwork/java/javase/downloads/jdk11-downloads-5066655.html)
   3. Create Jar
       - **Windows**
         - Open search bar and search for Command Prompt.
         - Write and execute :
           ```
-          cd /[YourLocalPath]/SpamFilterBot/DataGenerator/"
+          cd /[YourLocalPath]/SpamFilterBot/DataGenerator/
           ```
         - Write and execute :
           ```
@@ -53,7 +53,7 @@ The Discord bot, based on maching learning, will treat data that we give it, and
         - Open a terminal.
         - Write and execute :
           ```
-          cd /[YourLocalPath]/SpamFilterBot/DataGenerator/"
+          cd /[YourLocalPath]/SpamFilterBot/DataGenerator/
           ```
         - Write and execute :
           ```
@@ -83,7 +83,7 @@ The Discord bot, based on maching learning, will treat data that we give it, and
 
 ## Why KakaoTalk file ?
 We decided to use KakaoTalk file for generating data because it's the current platform we use for communication (so bigger data).  
-Parsing class [a relative link](./DataGenerator/src/main/java/dataGenerator/ParsingMessagesFromFile.java) can be re-implemented with another support platform.
+Parsing class, [here](./DataGenerator/src/main/java/dataGenerator/ParsingMessagesFromFile.java), can be re-implemented with another support platform.
 
 ## Why Discord Bot ?
 Discord bot because Discord is popular, have a great documentation, in English (KakaoTalk documentation is in Korean for major parts).
