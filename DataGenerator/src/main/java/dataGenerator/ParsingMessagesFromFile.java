@@ -1,4 +1,4 @@
-package DataProgram;
+package dataGenerator;
 
 import javafx.application.Platform;
 

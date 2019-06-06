@@ -1,4 +1,4 @@
-package DataProgram;
+package dataGenerator;
 
 public class Launcher {
     public static void main(String[] args) {

@@ -9,15 +9,15 @@ javafx {
     modules = [ 'javafx.controls', 'javafx.fxml']
 }
 
-version '1.0'
+version '1.1'
 sourceCompatibility = 11
 targetCompatibility = 11
 
-mainClassName='DataProgram.MainWindow'
+mainClassName='dataGenerator.MainWindow'
 
 jar {
     manifest {
-            attributes 'Main-Class': 'DataProgram.Launcher'
+            attributes 'Main-Class': 'dataGenerator.Launcher'
     }
     from {
         configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }

@@ -1,6 +1,6 @@
-package DataProgram;
+package dataGenerator;
 
-import DataProgram.DataStorage.DataBase;
+import dataGenerator.dataStorage.DataBase;
 import javafx.fxml.FXML;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextArea;

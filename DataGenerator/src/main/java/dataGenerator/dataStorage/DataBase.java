@@ -1,4 +1,4 @@
-package DataProgram.DataStorage;
+package dataGenerator.dataStorage;
 
 import javafx.concurrent.Task;
 import java.sql.*;

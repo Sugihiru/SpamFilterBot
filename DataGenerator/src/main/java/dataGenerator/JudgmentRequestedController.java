@@ -1,6 +1,6 @@
-package DataProgram;
+package dataGenerator;
 
-import DataProgram.DataStorage.DataBase;
+import dataGenerator.dataStorage.DataBase;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Pagination;
@@ -21,7 +21,7 @@ public class JudgmentRequestedController
     private List<MessageComponentController> components;
     private List<String> messages;
     private SceneController sceneController;
-    private String nameGeneratedFile = "DataStorage";
+    private String nameGeneratedFile = "dataStorage";
     private DataBase dataBase;
 
     @FXML
@@ -43,7 +43,7 @@ public class JudgmentRequestedController
             if (!(i < messages.size()))
                 break;
             try {
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Views/MessageComponent.fxml"));
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/views/MessageComponent.fxml"));
                 AnchorPane messageDisplayFXML = fxmlLoader.load();
                 MessageComponentController messageDisplayController = fxmlLoader.getController();
                 components.add(messageDisplayController);

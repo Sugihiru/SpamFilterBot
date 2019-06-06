@@ -1,4 +1,4 @@
-package DataProgram;
+package dataGenerator;
 
 import javafx.application.Application;
 import javafx.application.Platform;
@@ -20,14 +20,14 @@ public class MainWindow extends Application {
     private LoadFileController loadFileController;
 
     private void initJudgmentRequested() throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Views/JudgmentRequested.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/views/JudgmentRequested.fxml"));
         this.textJudgmentRequestedFXML = fxmlLoader.load();
         this.textJudgmentRequestedController = fxmlLoader.getController();
         this.textJudgmentRequestedController.init();
     }
 
     private void initLoadFile() throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Views/LoadFile.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/views/LoadFile.fxml"));
         this.loadFileFXML  = fxmlLoader.load();
         this.loadFileController = fxmlLoader.getController();
         this.loadFileController.giveJudgmentRequestedController(this.textJudgmentRequestedController);
