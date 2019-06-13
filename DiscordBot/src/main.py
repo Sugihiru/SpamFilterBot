@@ -1,6 +1,11 @@
 import os
+import collections
 
 import discord
+
+import db_reader
+import text_processor
+from spam_detector import SpamDetector
 
 TOKEN = os.environ.get("DISCORD_BOT_TOKEN")
 
@@ -10,6 +15,19 @@ class SpamFilter(discord.Client):
         super().__init__()
         self._summary_channel = None
         self._discussions_channel = None
+
+        spam_vector = collections.Counter()
+        msgs = db_reader.get_all_spams()
+        avg_len = 0
+        nb_vectors = 0
+        for msg in msgs:
+            tp = text_processor.TextProcessor(msg.message)
+            for vector in tp.vectors.values():
+                spam_vector += vector
+                avg_len += len(vector)
+                nb_vectors += 1
+        avg_len /= nb_vectors
+        self.detector = SpamDetector(spam_vector, avg_len)
 
     @property
     def summary_channel(self):
@@ -43,8 +61,11 @@ async def on_message(message):
         return
 
     if message.channel == bot.discussions_channel:
-        bot_msg = "{0}: {1}".format(message.author, message.content)
-        await bot.summary_channel.send(bot_msg)
+        analyzer = text_processor.TextProcessor(message.content)
+        for sentence, vector in analyzer.vectors.items():
+            if not bot.detector.is_spam(sentence, vector):
+                bot_msg = "{0}: {1}".format(message.author, message.content)
+                await bot.summary_channel.send(bot_msg)
 
 
 @bot.event

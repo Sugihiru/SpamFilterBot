@@ -28,6 +28,13 @@ class Message():
         return '<Message: {0} - {1}>'.format(self.message, self.is_spam)
 
 
+def get_all_spams():
+    msgs = list()
+    for result in session.query(DbMessage).filter(DbMessage.value == 0).all():
+        msgs.append(Message(result.message, result.value))
+    return msgs
+
+
 def get_all_messages():
     msgs = list()
     for result in session.query(DbMessage):
@@ -36,5 +43,5 @@ def get_all_messages():
 
 
 if __name__ == '__main__':
-    for msg in get_all_messages():
+    for msg in get_all_spams():
         print(msg)
