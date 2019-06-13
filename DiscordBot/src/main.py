@@ -15,6 +15,7 @@ class SpamFilter(discord.Client):
         super().__init__()
         self._summary_channel = None
         self._discussions_channel = None
+        self.spam_authors = collections.Counter()
 
         spam_vector = collections.Counter()
         msgs = db_reader.get_all_spams()
@@ -49,6 +50,14 @@ class SpamFilter(discord.Client):
             raise RuntimeError("Value should be set only once")
         self._discussions_channel = value
 
+    def get_spam_stats(self):
+        msgs = list()
+        msgs.append("```Spam stats")
+        for author, nb in self.spam_authors.most_common():
+            msgs.append("\t{0}: {1} spams posted".format(author, nb))
+        msgs.append("```")
+        return "\n".join(msgs)
+
 
 bot = SpamFilter()
 
@@ -61,11 +70,17 @@ async def on_message(message):
         return
 
     if message.channel == bot.discussions_channel:
+        if message.content == "!stats":
+            await bot.summary_channel.send(bot.get_spam_stats())
+            return
+
         analyzer = text_processor.TextProcessor(message.content)
         for sentence, vector in analyzer.vectors.items():
             if not bot.detector.is_spam(sentence, vector):
                 bot_msg = "{0}: {1}".format(message.author, message.content)
                 await bot.summary_channel.send(bot_msg)
+            else:
+                bot.spam_authors[message.author] += 1
 
 
 @bot.event

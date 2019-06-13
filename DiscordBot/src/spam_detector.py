@@ -7,10 +7,8 @@ EMAIL_REGEX = re.compile(r'[^@]+@[^@]+\.[^@]+')
 class SpamDetector():
     def __init__(self, spam_vector, avg_len):
         self.spam_vector = spam_vector
-        print(self.spam_vector)
         self.spam_vector_norm = self.norm(self.spam_vector)
         self.avg_length = avg_len
-        print(self.avg_length)
 
     def is_spam(self, sentence, vector):
         # Check if sentence contains a link or en email
