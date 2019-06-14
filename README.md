@@ -1,10 +1,10 @@
 # SpamFilterBot
-Discord bot for filtering messages and display only relevant messages.  
+Discord bot for filtering messages and display only relevant messages.
 The bot will read the Discord conversation, and according to its criterias (machine learning), choose interesting messages to display in a special channel.
 
 ## Motivation
-This project was created following the observation that it's difficult to follow a Discord conversation with many members without spending hours there.  
-We decided to do something about it.  
+This project was created following the observation that it's difficult to follow a Discord conversation with many members without spending hours there.
+We decided to do something about it.
 The Discord bot, based on maching learning, will treat data that we give it, and learn.
 
 ## Platform
@@ -28,11 +28,11 @@ The Discord bot, based on maching learning, will treat data that we give it, and
 
 ## Screenshots
 
-**Data Generator**  
+**Data Generator**
 
 
-![Screenshot](./Screenshots/FirstScreenDataGenerator.PNG)  
-![Screenshot](./Screenshots/SecondScreenDataGenerator.PNG)  
+![Screenshot](./Screenshots/FirstScreenDataGenerator.PNG)
+![Screenshot](./Screenshots/SecondScreenDataGenerator.PNG)
 
 ## Installation
 **Data Generator**
@@ -63,7 +63,7 @@ The Discord bot, based on maching learning, will treat data that we give it, and
           ./gradlew jar
           ```
         - Jar will be generated in "[YourLocalPath]/SpamFilterBot/DataGenerator/build/libs/" with name dataGenerator-[current version].jar.
-  4. You can run it, **enjoy** !    
+  4. You can run it, **enjoy** !
 
 **Discord bot**
 
@@ -80,21 +80,23 @@ The Discord bot, based on maching learning, will treat data that we give it, and
   5. Wait processing of parsing file, and generation/connection on MySQL database.
   6. The interface will change, now you can judge the interesting message by selecting yes or no for each message.
   7. You can change of page at the end of the interface by clicking on number page, or 	directional arrows.
-  8. You can close the software, and run it later, all modifications will be save on database in live.    
+  8. You can close the software, and run it later, all modifications will be save on database in live.
 
 **Discord bot**
+  1. Install the dependencies using `pip install -r requirements.txt`
+  2. Launch the bot using `python main.py`
 
 ## Why KakaoTalk file ?
-We decided to use KakaoTalk file for generating data because it's the current platform we use for communication (so bigger data).  
+We decided to use KakaoTalk file for generating data because it's the current platform we use for communication (so bigger data).
 Parsing class, [here](./DataGenerator/src/main/java/dataGenerator/ParsingMessagesFromFile.java), can be re-implemented with another support platform.
 
 ## Why Discord Bot ?
 Discord bot because Discord is popular, have a great documentation, in English (KakaoTalk documentation is in Korean for major parts).
 
 ## Contributors
-[@Sugihiru](https://github.com/Sugihiru)  
-[@VianneyDoleans](https://github.com/VianneyDoleans)  
-[@Hardkaise](https://github.com/Hardkaise)  
-Philippe  
-Walter  
-Alexis  
+[@Sugihiru](https://github.com/Sugihiru) - 50181588
+[@VianneyDoleans](https://github.com/VianneyDoleans) - 50181551
+[@Hardkaise](https://github.com/Hardkaise) - 50181586
+Philippe - 50181563
+Walter - 50181549
+Alexis - 50181595
